@@ -1,5 +1,5 @@
 
-import { fetchFilms } from '@/app/data/db';
+import { fetchFilms } from '@/app/lib/db';
 import Link from 'next/link';
  
 export default async function Page() {
@@ -11,15 +11,15 @@ export default async function Page() {
 <ul>
 {films.map((film,index) => (
   <div key={index}>
-    <Link href={`/films/${film.filmid}`}>
-  {film.filmtitle} ({film.filmcertificate})
+    <Link href={`/films/${film.film_id}`}>
+  {film.film_title} ({film.film_certificate})
 </Link>
 <p>
-                        <Link href={`films/edit/${film.filmid}`}>
+                        <Link href={`films/edit/${film.film_id}`}>
                             Edit
                         </Link></p>
                         <p>
-                        <Link href={`films/delete/${film.filmid}`}>
+                        <Link href={`films/delete/${film.film_id}`}>
                             Delete
                         </Link>
                     </p>

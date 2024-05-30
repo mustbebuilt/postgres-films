@@ -1,0 +1,24 @@
+import { redirect } from 'next/navigation';
+import { fetchFilm, deleteFilm } from '@/app/lib/db';
+ 
+export default async function Page({ params }) {
+
+  console.info(params.id);
+
+  const film = await fetchFilm(params.id);
+
+  return (
+    <>
+      <div>
+        <h1>Delete Film</h1>
+        <h1>{film.film_title} ({film.film_certificate})</h1>
+        <form action={deleteFilm}>
+          <input type="hidden" name="film_id" defaultValue={params.id} />
+
+
+          <button type="submit">Delete Film</button>
+        </form>
+      </div>
+    </>
+  )
+}
